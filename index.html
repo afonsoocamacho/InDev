@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Coming Soon | Afonso Camacho Design Portfolio</title>
+    <meta
+      name="description"
+      content="Something cool is coming. Be the first to know."
+    />
+    <meta
+      name="keywords"
+      content="coming soon, portfolio, launch, design, vibes"
+    />
+    <meta name="author" content="Afonso Camacho" />
+
+    <!-- Social: Open Graph -->
+    <meta
+      property="og:title"
+      content="Coming Soon | Afonso Camacho Design Portfolio"
+    />
+    <meta property="og:description" content="Something awesome is cooking." />
+    <meta property="og:url" content="" id="og-url" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Afonso Camacho Design Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Social: Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Coming Soon | Afonso Camacho Design Portfolio"
+    />
+    <meta name="twitter:description" content="You’re not ready for this." />
+    <meta name="twitter:creator" content="@afonsoocamacho" />
+
+    <!-- Theme -->
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#000" />
+    <meta name="msapplication-navbutton-color" content="#000" />
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <p id="logo">Afonso Camacho</p>
+    </header>
+
+    <main>
+      <h1 id="message"></h1>
+      <p>Come back later. Or don’t. But do. It’ll be worth it.</p>
+
+      <div class="share">
+        <p>Share the wait with your people:</p>
+        <div class="social-links">
+          <a id="twitter-share" class="link-with-arrow" href="#" target="_blank"
+            >Twitter
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="6 6 12 12"
+            >
+              <path d="M7 17L17 7M7 7h10v10" /></svg
+          ></a>
+          <a
+            id="facebook-share"
+            class="link-with-arrow"
+            href="#"
+            target="_blank"
+            >Facebook
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="6 6 12 12"
+            >
+              <path d="M7 17L17 7M7 7h10v10" /></svg
+          ></a>
+          <a
+            id="linkedin-share"
+            class="link-with-arrow"
+            href="#"
+            target="_blank"
+            >LinkedIn
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="6 6 12 12"
+            >
+              <path d="M7 17L17 7M7 7h10v10" /></svg
+          ></a>
+        </div>
+        <p>
+          Or just
+          <span class="link-with-arrow" onclick="copyLink()"
+            >copy the link
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              />
+            </svg>
+          </span>
+          and spam your group chat.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        ©
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Afonso Camacho. All rights reserved.
+      </p>
+      <p>
+        Making things that make sense (and look good), with
+        <span class="heart-container"> <span class="heart">🤍</span> </span>.
+      </p>
+    </footer>
+
+    <script>
+      // Set OG URL dynamically
+      document
+        .getElementById("og-url")
+        .setAttribute("content", window.location.href);
+
+      // Random message logic
+      const messages = [
+        "Something amazing is coming. \nI can’t tell you what it is yet. \nNot because it’s a secret, but because I'm still figuring it out.",
+        "I'm busy debating over fonts.",
+        "In a world where websites actually launch on time… \nmine almost made it.",
+        "Your digital experience is buffering. \nBut it’s not your Wi-Fi — it’s us.",
+        "99% done. That last 1%? \nIt’s emotionally complicated.",
+        "Website not found — yet! \nBecause I'm still building it. Duh.",
+      ];
+
+      const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("message").innerHTML = randomMessage.replace(
+        /\n/g,
+        "<br>"
+      );
+
+      // Copy link to clipboard
+      function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert("Copied to clipboard! Paste it somewhere fun.");
+        });
+      }
+
+      // Social share links
+      const encodedURL = encodeURIComponent(window.location.href);
+      document.getElementById(
+        "twitter-share"
+      ).href = `https://twitter.com/intent/tweet?text=Something cool is coming soon… Check it out! ${encodedURL}`;
+      document.getElementById(
+        "facebook-share"
+      ).href = `https://www.facebook.com/sharer/sharer.php?u=${encodedURL}`;
+      document.getElementById(
+        "linkedin-share"
+      ).href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedURL}`;
+
+      const colors = ["#73BFB8", "#3DA5D9", "#2465AB", "#FFC800", "#EB7317"];
+      let lastColorIndex = -1;
+
+      document.addEventListener("click", () => {
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * colors.length);
+        } while (newIndex === lastColorIndex);
+
+        lastColorIndex = newIndex;
+        const randomColor = colors[newIndex];
+
+        document.body.style.backgroundColor = randomColor;
+        document.body.style.color = "#000";
+      });
+
+      const heart = document.querySelector(".heart");
+
+      // On mouseenter, add the animation class if it's not already added
+      heart.addEventListener("mouseenter", function () {
+        if (!this.classList.contains("animate-heart")) {
+          this.classList.add("animate-heart");
+        }
+      });
+
+      // After the animation ends, reset so that it can play again on hover
+      heart.addEventListener("animationend", function () {
+        this.classList.remove("animate-heart");
+        // Reset inline styles if needed
+        this.style.opacity = "1";
+        this.style.transform = "translateX(-50%) scale(1) translateY(0)";
+      });
+    </script>
+  </body>
+</html>
