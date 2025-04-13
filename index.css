@@ -317,45 +317,70 @@ footer {
   height: 11px;
 }
 
-/* Container that preserves layout size */
+/* Container that holds the heart emoji. It has a fixed height and 
+   is displayed as an inline-block so that its width expansion only moves text horizontally. */
 .heart-container {
   display: inline-block;
   position: relative;
-  width: 1em; /* fixed width for the container */
-  height: 1em; /* fixed height so the text line stays unchanged */
-
-  overflow: visible; /* allow the animated emoji to move outside */
+  width: 1em; /* Fixed initial width */
+  height: 1em; /* Fixed height so the text line stays constant */
+  vertical-align: middle; /* Aligns the container with surrounding text */
+  overflow: visible; /* Allow the heart to move outside the container boundaries */
+  transition: width 0.8s ease; /* Smooth horizontal expansion */
 }
 
-/* The heart emoji is absolutely positioned inside its container */
+/* The heart emoji is absolutely positioned inside its container.
+     It’s centered horizontally and anchored at the bottom so that when it inflates,
+     it “rises” without affecting the container’s vertical dimensions. */
 .heart {
   position: absolute;
-  top: -5px;
   left: 50%;
+  bottom: 0;
   transform: translateX(-50%) scale(1);
-  transform-origin: bottom center; /* so it inflates upward */
+  transform-origin: bottom center;
   cursor: pointer;
+  transition: transform 0.8s ease;
 }
 
-/* This class will trigger the animation */
+/* Animation class for the container: expands its width to shift text sideways */
+.animate-container {
+  animation: containerExpand 0.8s forwards;
+}
+
+/* Animation class for the heart emoji: inflates like a balloon then pops */
 .animate-heart {
-  animation: inflateAndPop 1.2s forwards;
+  animation: heartInflate 0.8s forwards;
 }
 
-/* Keyframes for the heart animation */
-@keyframes inflateAndPop {
+/* Keyframes to animate the container's width.
+     Starts at 1em, expands to 3em at the midpoint (pushing text to the side),
+     then contracts back to 1em. */
+@keyframes containerExpand {
+  0% {
+    width: 1em;
+  }
+  50% {
+    width: 3em;
+  }
+  100% {
+    width: 1em;
+  }
+}
+
+/* Keyframes for the heart inflation and upward pop.
+     The heart scales up (inflates) and then pops by scaling down to 0,
+     while a slight upward movement (translateY) simulates the balloon lifting off. */
+@keyframes heartInflate {
   0% {
     transform: translateX(-50%) scale(1) translateY(0);
     opacity: 1;
   }
   50% {
-    /* Inflates up to 2.5x its size and moves slightly upward */
-    transform: translateX(-50%) scale(2.5) translateY(-0.2em);
+    transform: translateX(-50%) scale(2.5) translateY(0); /* Inflates to 2.5× its size; stays aligned with container bottom */
     opacity: 1;
   }
   100% {
-    /* Pops: shrinks to nothing while moving further upward */
-    transform: translateX(-50%) scale(0) translateY(-1em);
+    transform: translateX(-50%) scale(0) translateY(-0.8em); /* Pops by shrinking to 0 while moving upward */
     opacity: 0;
   }
 }

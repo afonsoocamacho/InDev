@@ -204,20 +204,24 @@
       });
 
       const heart = document.querySelector(".heart");
+      const heartContainer = document.querySelector(".heart-container");
 
-      // On mouseenter, add the animation class if it's not already added
+      // When hovering over the heart, trigger both animations.
       heart.addEventListener("mouseenter", function () {
         if (!this.classList.contains("animate-heart")) {
-          this.classList.add("animate-heart");
+          heartContainer.classList.add("animate-container");
+          heart.classList.add("animate-heart");
         }
       });
 
-      // After the animation ends, reset so that it can play again on hover
+      // After the animation finishes, reset so that the effect can occur again.
       heart.addEventListener("animationend", function () {
-        this.classList.remove("animate-heart");
-        // Reset inline styles if needed
-        this.style.opacity = "1";
-        this.style.transform = "translateX(-50%) scale(1) translateY(0)";
+        heartContainer.classList.remove("animate-container");
+        heart.classList.remove("animate-heart");
+
+        // Reset any inline styles if necessary
+        heart.style.opacity = "1";
+        heart.style.transform = "translateX(-50%) scale(1) translateY(0)";
       });
     </script>
   </body>
