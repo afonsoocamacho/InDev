@@ -229,6 +229,9 @@ main {
   }
 
   .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 0.55rem;
   }
 
@@ -261,8 +264,7 @@ main {
 
   @media screen and (max-width: 600px) {
     .share a {
-      display: block;
-      margin: 0.5rem 0;
+      margin: 0rem 0.5rem;
     }
   }
 }
@@ -383,4 +385,34 @@ footer {
     transform: translateX(-50%) scale(0) translateY(-0.8em); /* Pops by shrinking to 0 while moving upward */
     opacity: 0;
   }
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  footer p {
+    font-size: 0.625rem; /* smaller text on mobile */
+  }
+  .share p {
+    font-size: 0.75rem !important; /* smaller text on mobile */
+    margin-bottom: 5px !important;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .social-links {
+    margin-bottom: 5px !important;
+  }
+  .share {
+    padding-bottom: 40px !important;
+  }
+}
+
+.flex {
+  display: flex !important;
 }
